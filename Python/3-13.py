@@ -1,0 +1,33 @@
+import turtle
+t=turtle.Turtle()
+print('select number: 1. tryangle / 2. rectagle / 3. pentagon')
+num=int(input('num:'))
+if num == 1:
+    t.forward(100)
+    t.right(360/3)
+    t.forward(100)
+    t.right(360/3)
+    t.forward(100)
+    t.right(360/3)
+elif num == 2:
+    t.forward(100)
+    t.right(360/4)
+    t.forward(100)
+    t.right(360/4)
+    t.forward(100)
+    t.right(360/4)
+    t.forward(100)
+    t.right(360/4)
+elif num == 3:
+    t.forward(100)
+    t.right(360/5)
+    t.forward(100)
+    t.right(360/5)
+    t.forward(100)
+    t.right(360/5)
+    t.forward(100)
+    t.right(360/5)
+    t.forward(100)
+    t.right(360/5)
+else:
+    print('wrong number')
