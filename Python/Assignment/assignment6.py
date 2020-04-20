@@ -3,9 +3,9 @@
 1. 도망치다 잡히는지, 잘 도망치는지는 random으로 하는가 아니면 선택하는가?
 2. 도망에 실패하면 무조건 죽는 것인가? 아니면 싸우는 것인가?
 3. 싸움에서 지면 게임 끝? 프로그램 종료?
-4. 1회 공격력은 내 맘대로?
-5. 곰을 마주칠 확률은 내 마음대로?
-6. 1초 멈추는 것을 다른곳에서도 해도 되는지?
+4. 곰을 마주칠 확률은 내 마음대로?
+5. 1초 멈추는 것을 다른곳에서도 해도 되는지? ㅇㅇㅇ
+6. 싸울지 선택하는 것은 랜덤 함수로 아니면 사용자가 입력하도록?
 '''
 
 import random
@@ -22,7 +22,7 @@ while count < 10:
     
     # 곰과 만났다면.
     if isBearAppear <= 3:
-        print('곰과 마주쳤습니다🐻 맞서 싸우시겠습니까? (싸우고 싶다면 1, 도망가고 싶다면 0을 입력.) ', end='' )
+        print('곰과 마주쳤습니다🐻 맞서 싸우시겠습니까? (싸우고 싶다면 1, 도망가고 싶다면 2을 입력.) ', end='' )
         bearStamina = 100   # 곰의 체력, 100에서 시작.
         wantFight = int(input())     # 곰과 싸울지 여부, 0이면 도망, 1이면 싸움.
 
@@ -35,7 +35,7 @@ while count < 10:
             fightCount = 0  # 몇 번 공격했는지.
             # 6회까지 공격 가능.
             while True:
-                attack = random.randint(1,40)   # 1회 공격력.
+                attack = random.randint(1,30)   # 1회 공격력.
                 fightCount = fightCount + 1     # 공격 횟수 1개 증가.
                 bearStamina = bearStamina - attack
                 if bearStamina <= 0:
@@ -51,7 +51,7 @@ while count < 10:
                     sys.exit()
         
         # 도망가길 원한다면.
-        elif wantFight == 0:
+        elif wantFight == 2:
             print('도망갑니다!')
             successfulEscape = random.randint(0,1)  # 도망 성공 여부, 0이면 실패 1이면 성공.
             if successfulEscape == 0:
