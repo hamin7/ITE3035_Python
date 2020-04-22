@@ -53,13 +53,13 @@ while count < 10:
         # 도망가길 원한다면.
         elif wantFight == 2:
             print('도망갑니다!')
-            successfulEscape = random.randint(0,1)  # 도망 성공 여부, 0이면 실패 1이면 성공.
+            successfulEscape = random.randint(0,1)  # 도망 성공 여부(랜덤), 0이면 실패 1이면 성공.
             if successfulEscape == 0:
                 print('성공적으로 도망쳤습니다👍🏼')
             elif successfulEscape == 1:
                 print('도망에 실패했습니다❗️')
                 print('나무 찍기에 실패하였습니다. 프로그램을 종료합니다.👻')
-                sys.exit()
+                break
             else:
                 print('에러입니다.🤯')
         else:
