@@ -1,5 +1,6 @@
-def sayHi(i):   # 매개변수
-    print(i, 'Hi'*10)
+def sayHi(i,j):   # 매개변수
+    print('name:',i,'address:',address, 'Hi'*10)
 
 name = input('name:')
-sayHi(name) # 전달인자
+address = input('address:')
+sayHi(name,address) # 전달인자
