@@ -1,9 +1,12 @@
-test = []
-sum = 0
-n = int(input('n:'))
+def val():
+    a = int(input('n:'))
+    return a
 
-for i in range(n):
-    val = int(input('num:'))
-    test.append(val)
+def result(n):
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print(j, end='')
+        print()
 
-print(test)
+a = val()
+result(a)
