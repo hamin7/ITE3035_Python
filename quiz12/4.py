@@ -1,18 +1,13 @@
-n = int(input("Please enter the number:"))
-for i in range (1,n+1): #print(i)
-    if(i >= 1 and i <30):
-        if(i % 10 == 3 or i % 10 == 6 or i % 10 == 9):
-            print("*")
-            continue 
-        else:
-            print(i)
-    elif(i >= 30 and i <= 40):
-        if(i % 10 == 3 or i % 10 == 6 or i % 10 == 9): 
-            print("**")
+num=int(input()) 
+count=0
+for i in range(1,num+1): 
+    for j in str(i):
+        if j=="0": 
             continue
-        elif(i != 40): 
-            print("*")
-        else:
-            print(i)
+        elif int(j)%3==0: 
+            count+=1
+    if count==0: 
+        print(i)
     else:
-        break
+        print("*" * count) 
+        count=0
