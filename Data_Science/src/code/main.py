@@ -4,8 +4,6 @@ from functools import reduce
 import matplotlib.pyplot as plt
 from pylab import figure, axes, pie, title, savefig
 
-# scientific notation을 사용하지 않는 경우
-# pd.options.display.float_format = '{:.4f}'.format
 
 df1 = pd.read_csv("/Users/hamin/bithumb_bot_data/include/2018-new/2018-01-btc-krw.csv")   # load csv
 df2 = pd.read_csv("/Users/hamin/bithumb_bot_data/include/2018-new/2018-02-btc-krw.csv")   # load csv
@@ -193,7 +191,7 @@ cumsum_df_zero_point5=cumsum_df_zero_point5.fillna(0)
 cumsum_df_zero_point6=cumsum_df_zero_point6.fillna(0)
 cumsum_df_zero_point7=cumsum_df_zero_point7.fillna(0)
 
-# 그래프 생성 및 저장
+# 달 별 profit 그래프 생성 및 저장
 profit_graph1=cumsum_df_zero_point1[['amount_cumsum']].plot(title='2018-01-profit_graph')
 profit_graph1.set_xlabel('date')
 profit_graph1.set_ylabel('Profit_price(1 thousand krw)')
@@ -242,6 +240,16 @@ profit_graph7.set_ylabel('Profit_price(1 thousand krw)')
 profit_graph7.set_yticklabels(['$0$', '$0$','$2,000$','$4,000$','$6,000$','$8,000$','$10,000$', '$12,000$'])
 profit_graph7.set_xticklabels(['$0$', '$07/01$', '$07/07$', '$07/13$', '$07/19$', '07/25'])
 plt.savefig('/Users/hamin/bithumb_bot/graph/profit/2018-07-profit_graph.png', dpi=300)
+
+
+
+
+
+
+
+
+
+
 
 profit_point_graph1=cumsum_df_zero_point1[['point_amount_cumsum']].plot(title='2018-01-profit_point_graph')
 profit_point_graph1.set_xlabel('date')
@@ -337,3 +345,4 @@ profit_point_graph_table5.to_csv("/Users/hamin/bithumb_bot/table/2018-05-profit_
 profit_point_graph_table6.to_csv("/Users/hamin/bithumb_bot/table/2018-06-profit_point_graph_table.csv", header=True, index=True, encoding = 'utf-8')
 profit_point_graph_table7.to_csv("/Users/hamin/bithumb_bot/table/2018-07-profit_point_graph_table.csv", header=True, index=True, encoding = 'utf-8')
 
+if __name__ == "__main__":
