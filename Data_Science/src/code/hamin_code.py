@@ -65,7 +65,7 @@ def marketPriceGraphGenerator():
     priceGraph = df.plot(title="marketPrice May", legend=True)
     priceGraph.set_xlabel('Day')     # x축 정보 표시
     priceGraph.set_ylabel('Price(10 million krw)')     # y축 정보 표시
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/marketPriceMay.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/marketPriceMay.png', dpi=300)
 
     # 전체 시세
     # x = ["{}월".format(i + 1) for i in range(12)]
@@ -77,7 +77,7 @@ def marketPriceGraphGenerator():
     # priceGraph.set_xticks([np.1,np.2,np.3,np.4,np.5,np.6,np.7,np.8,np.9,np.10,np.11,np.12,np.13,np.14,np.15,np.16,np.17,np.18,np.19,np.20,np.21,np.22,np.23,np.24,np.25,np.26,np.27,np.28,np.29,np.30,np.31])
     priceGraph.set_xticklabels(['$0$','$0$','$4$','$8$','$12$','$16$','$20$','$24$','$28$','$31$'])
     priceGraph.set_yticklabels(['$0$','$8.0$','$8.5$','$9.0$','$9.5$','$10.0$','$10.5$'])
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/marketPriceMay.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/marketPriceMay.png', dpi=300)
 
     ## converting timestamp column type 'object' to 'datetime'
     df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%Y-%m-%d %H:%M:%S', errors='raise')
@@ -98,24 +98,24 @@ def marketPriceGraphGenerator():
     datePriceGraph.set_xlabel('Day(End of Day)')     # x축 정보 표시
     datePriceGraph.set_ylabel('Price(1 million krw)')     # y축 정보 표시
     datePriceGraph.set_yticklabels(['$0$','$8.0$','$8.5$','$9.0$','$9.5$','$10.0$','$10.5$'])
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/dailyMarketPrice.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/dailyMarketPrice.png', dpi=300)
 
     # hour 별 시세 평균
     hourPriceGraph = group_hour_Price.mean().plot(title="Hourly marketPrice", marker='o')
     hourPriceGraph.set_xlabel('Hour')
     hourPriceGraph.set_ylabel('Price (1 thousand krw)')
     hourPriceGraph.set_yticklabels(['$0$','$9,025$','$9,050$','$9,075$','$9,100$','$9,125$','$9,150$','$9,175$','$9,200$'])
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/hourlyMarketPrice.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/hourlyMarketPrice.png', dpi=300)
 
     # min 별 시세 평균
     minutePriceGraph = group_minute_Price.mean().plot(title="Minute marketPrice", marker='o')
     minutePriceGraph.set_xlabel('Minute')
     minutePriceGraph.set_ylabel('Price (1 thousand krw)')
     minutePriceGraph.set_yticklabels(['$0$','$9,095$','$9,100$','$9,105$','$9,110$','$9,115$'])
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/minuteMarketPrice.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/minuteMarketPrice.png', dpi=300)
 
 def totalTransactionCount():
-    df = pd.read_csv("/Users/hamin/Documents/bithumb_analysis/include/2018-05-btc-krw.csv")
+    df = pd.read_csv("/Users/hamin/bithumb_analysis/include/2018-05-btc-krw.csv")
     ## converting timestamp column type 'object' to 'datetime'
     df['timestamp'] = pd.to_datetime(df['timestamp'], format='%Y-%m-%d %H:%M:%S', errors='raise')
     # df.dtypes
@@ -158,20 +158,20 @@ def totalTransactionCount():
     day_df_final = reduce(lambda left,right: pd.merge(left,right,on='timestamp_hour'), dfs)
     day_df_final.columns = [ "Hourly transaction", "Hourly sell-buy", "Hourly sell transaction", "Hourly sell", "Hourly buy transaction", "Hourly buy", "Hourly total sell", "Hourly absolute total buy"]
 
-    day_df_final.to_csv("/Users/hamin/ITE3035_Python/Data_Science/table/hour_result_table.csv", header=True, index=True, encoding = 'utf-8')
+    day_df_final.to_csv("/Users/hamin/bithumb_analysis/table/hour_result_table.csv", header=True, index=True, encoding = 'utf-8')
 
     day_df_final[['Hourly transaction', 'Hourly sell transaction', 'Hourly buy transaction']].plot(title='Hourly transaction count', marker='o')
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/Hourly transaction count.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/Hourly transaction count.png', dpi=300)
 
     hourTransGraph = day_df_final[['Hourly sell transaction', 'Hourly buy transaction']].plot.bar(title='Hourly transaction count', stacked=True)
     hourTransGraph.set_xlabel('Hour')
     hourTransGraph.set_ylabel('Count')
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/Hourly transaction count(Stacked).png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/Hourly transaction count(Stacked).png', dpi=300)
 
     hourTransBarGraph = day_df_final[['Hourly sell transaction', 'Hourly buy transaction']].plot.bar(title='Hourly transaction count(Bar)')
     hourTransBarGraph.set_xlabel('Hour')
     hourTransBarGraph.set_ylabel('Count')
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/Hourly transaction count(Bar).png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/Hourly transaction count(Bar).png', dpi=300)
 
     # Minute
     ## creating 'minute - amount' connection
@@ -207,7 +207,7 @@ def totalTransactionCount():
     absolute_minute_negative_sum = absolute_minute_negative_sum * (-1)
     # total 은 sell - buy
     absolute_minute_total_amount = absolute_minute_negative_sum+group_minute_amount_positive.sum()
-    absolute_minute_total_amount
+    # absolute_minute_total_amount
 
     # date 별 절대값 총합
     # negative는 buy
@@ -227,40 +227,40 @@ def totalTransactionCount():
     day_df_date_final.columns = [ "Date transaction", "Date sell-buy", "Date sell transaction", "Date sell", "Date buy transaction", "Date buy", "Date total sell", "Date absolute total buy"]
 
     # table 저장하기
-    day_df_minute_final.to_csv("/Users/hamin/ITE3035_Python/Data_Science/table/minute_result_table.csv", header=True, index=True, encoding = 'utf-8')
+    day_df_minute_final.to_csv("/Users/hamin/bithumb_analysis/table/minute_result_table.csv", header=True, index=True, encoding = 'utf-8')
 
     # table 저장하기
-    day_df_date_final.to_csv("/Users/hamin/ITE3035_Python/Data_Science/table/date_result_table.csv", header=True, index=True, encoding = 'utf-8')
+    day_df_date_final.to_csv("/Users/hamin/bithumb_analysis/table/date_result_table.csv", header=True, index=True, encoding = 'utf-8')
 
     # Minute - transaction 그래프 그리기
     day_df_minute_final[['Minute transaction', 'Minute sell transaction', 'Minute buy transaction']].plot(title='Transaction count per minute', marker='o')
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/Transaction_count_per_minute.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/Transaction_count_per_minute.png', dpi=300)
 
     # Minute - transaction 그래프 그리기
     day_df_minute_final[['Minute transaction', 'Minute sell transaction', 'Minute buy transaction']].plot(title='Transaction count per minute', marker='o')
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/Transaction_count_per_minute.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/Transaction_count_per_minute.png', dpi=300)
 
     minuteTransBarGraph = day_df_minute_final[['Minute sell transaction', 'Minute buy transaction']].plot.bar(title='Transaction count per minute(Bar)')
     minuteTransBarGraph.set_xlabel('Minute')
     minuteTransBarGraph.set_ylabel('Transaction')
     minuteTransBarGraph.set_xticklabels(['$0$','','','','','','','','','','$10$','','','','','','','','','','$20$','','','','','','','','','','$30$','','','','','','','','','','$40$','','','','','','','','','','$50$'])
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/Transaction_count_per_minute(Bar).png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/Transaction_count_per_minute(Bar).png', dpi=300)
 
     # Date - transaction 그래프 그리기
     day_df_date_final[['Date transaction', 'Date sell transaction', 'Date buy transaction']].plot(title='Transaction count per day', marker='o')
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/Transaction_count_per_day.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/Transaction_count_per_day.png', dpi=300)
     dayTransGraph = day_df_date_final[['Date sell transaction', 'Date buy transaction']].plot.bar(title='Transaction count per day', stacked=True)
     dayTransGraph.set_xlabel('Date')
     dayTransGraph.set_ylabel('Transaction')
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/Transaction_count_per_day(Stacked).png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/Transaction_count_per_day(Stacked).png', dpi=300)
 
     dayTransBarGraph = day_df_date_final[['Date sell transaction', 'Date buy transaction']].plot.bar(title='Transaction count per day(Bar)')
     dayTransBarGraph.set_xlabel('Date')
     dayTransBarGraph.set_ylabel('Transaction')
-    plt.savefig('/Users/hamin/ITE3035_Python/Data_Science/graph/Transaction_count_per_day(Bar).png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/Transaction_count_per_day(Bar).png', dpi=300)
 
 def priceSideMapping():
-    df = pd.read_csv("/Users/hamin/bithumb_analysis/include/2018-05-btc-krw.csv")
+    df = pd.read_csv("/Users/hamin/bithumb_analysis/table/2018-05-btc-krw.csv")
     # creating 'price - side' connection - price가 같은것 끼리 묶는다.
     side_price = df['side'].groupby(df['price'])
 
@@ -277,11 +277,11 @@ def priceSideMapping():
 
     # priceGroup-side 간 그래프
     side_by_priceGroup.plot(title='side by price Group', marker='o')
-    plt.savefig('/Users/hamin/Documents/bithumb_analysis/graph/side_by_price_Group.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/side_by_price_Group.png', dpi=300)
 
     # priceGroup-mean of side 간 그래프 (0.5보다 크면 산 것이 더 많다는 것)
     side_by_priceGroup.plot(y='mean of side',title='mean of side by price Group', marker='o')
-    plt.savefig('/Users/hamin/Documents/bithumb_analysis/graph/mean_of_side_by_price_Group.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/mean_of_side_by_price_Group.png', dpi=300)
 
 def priceAmountMapping():
     df = pd.read_csv("/Users/hamin/bithumb_analysis/include/2018-05-btc-krw.csv")
@@ -300,23 +300,23 @@ def priceAmountMapping():
     amount_by_priceGroup = reduce(lambda left, right: pd.merge(left,right, on='price'), group_amount_by_priceGroup_table)
     amount_by_priceGroup.columns = ["# of amount", "mean of amount", "sum of amount"]
 
-    amount_by_priceGroup.to_csv("/Users/hamin/Documents/bithumb_analysis/table/amount_by_price_Group.csv")
+    amount_by_priceGroup.to_csv("/Users/hamin/bithumb_analysis/table/amount_by_price_Group.csv")
 
     # priceGroup-amount 간 그래프
     amount_by_priceGroup.plot(title='amount by price Group', marker='o')
-    plt.savefig('/Users/hamin/Documents/bithumb_analysis/graph/amount_by_price_Group.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/amount_by_price_Group.png', dpi=300)
 
     # priceGroup-# of amount 간 그래프
     amount_by_priceGroup.plot(y='# of amount',title='# of amount by price Group', marker='o')
-    plt.savefig('/Users/hamin/Documents/bithumb_analysis/graph/#_of_amount_by_price_Group.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/#_of_amount_by_price_Group.png', dpi=300)
 
     # priceGroup-mean of amount 간 그래프
     amount_by_priceGroup.plot(y='mean of amount',title='mean of amount by price Group', marker='o')
-    plt.savefig('/Users/hamin/Documents/bithumb_analysis/graph/mean_of_amount_by_price_Group.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/mean_of_amount_by_price_Group.png', dpi=300)
 
     # priceGroup-sum of amount 간 그래프
     amount_by_priceGroup.plot(y='sum of amount',title='sum of amount by price Group', marker='o')
-    plt.savefig('/Users/hamin/Documents/bithumb_analysis/graph/sum_of_amount_by_price_Group.png', dpi=300)
+    plt.savefig('/Users/hamin/bithumb_analysis/graph/sum_of_amount_by_price_Group.png', dpi=300)
 
 def profitGraphGenerator():
     
