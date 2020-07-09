@@ -135,7 +135,6 @@ def totalTransactionCount():
     ## creating 'hour - amount' connection
     group_hour_amount = df['amount'].groupby(df['timestamp_hour'])
 
-
     ## creating 'hourly - buy amount' connection
     df2 = df.copy()
     df2 =df2[df2['amount'] > 0]
