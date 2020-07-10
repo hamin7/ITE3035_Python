@@ -147,6 +147,7 @@ def totalTransactionCount():
 
     # 시간별 절대값 총합
     # negative는 buy
+    # positive는 sell
     absolute_negative_sum = group_hour_amount_negative.sum()
     absolute_negative_sum = absolute_negative_sum * (-1)
     # total 은 sell - buy
