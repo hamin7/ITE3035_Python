@@ -289,7 +289,6 @@ def priceAmountMapping():
     # creating 'price - amount' connection - price가 같은것 끼리 묶는다.
     amount_price = df['amount'].groupby(df['price'])
 
-
     # 가격을 10 구간 으로 구간 나눔
     factor_price=pd.cut(df.price,10)
 
