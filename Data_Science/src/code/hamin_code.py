@@ -513,17 +513,17 @@ marketPrice()
 # market price data로 그래프 그리기.
 marketPriceGraphGenerator()
 
-# totalTransactionCount
+# totalTransactionCount.
 totalTransactionCount()
 
-# price-side mapping graph
+# price-side mapping graph.
 priceSideMapping()
 
-# price-amount mapping graph
+# price-amount mapping graph.
 priceAmountMapping()
 
-# time - profit 그래프 생성
+# time - profit 그래프 생성.
 profitGraphGenerator()
 
-# 달 별 highlight를 summuarize
+# 달 별 highlight를 summuarize.
 summaryByMonth()
