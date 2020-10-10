@@ -61,7 +61,7 @@ annots =  [dict(x=LabelDateA,y=0,text="30 Days", showarrow=False, font=dict(colo
            ]
 
 fig = px.timeline(df, x_start="Start", x_end="Finish", y="Task", color="Color", width=1400, height=300)
-fig.update_layout(title_text='When we trade in Upbit BTC 2018 ~ 2019', title_x = 0.5)
+fig.update_layout(title_text='When we trade in Upbit BTC 2018.07.02 ~ 2019.07.29 (393 Days)', title_x = 0.5)
 fig.update_yaxes(autorange="reversed")
 fig['layout']['annotations'] = annots
 # fig.savefig('Bithumb-BTC2018-timeline.png', dpi=1000)

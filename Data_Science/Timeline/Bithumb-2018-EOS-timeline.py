@@ -31,7 +31,7 @@ annots =  [dict(x=LabelDateA,y=0,text="14 Days", showarrow=False, font=dict(colo
            ]
 
 fig = px.timeline(df, x_start="Start", x_end="Finish", y="Task", color="Color", width=1400, height=300)
-fig.update_layout(title_text='When we trade in Bithumb EOS 2018', title_x = 0.5)
+fig.update_layout(title_text='When we trade in Bithumb EOS 2018.04.24 ~ 2018.07.08 (76 Days)', title_x = 0.5)
 fig.update_yaxes(autorange="reversed")
 fig['layout']['annotations'] = annots
 
